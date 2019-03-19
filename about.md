@@ -9,7 +9,7 @@ permalink: /whoami/
 
 Hi!
 
-I'm Gaz!
+I'm Gaz! - [@_GarethP](https://twitter.com/_GarethP){:target="\_blank"}
 
 Currently, I'm a final year computer forensics and security student at Leeds Beckett, hopefully this will change to graduate in a few months!🤞🏼
 
