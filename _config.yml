@@ -1,0 +1,53 @@
+# Site
+name: "HackCar"
+title: "HackCar"
+description: "The Car Hacking Blog"
+meta_description: "Car Hacking Research Blog"
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/logo.png'
+url:
+baseurl:
+google_analytics: 'UA-46278016-1'
+disqus: ''
+include: ["_pages"]
+permalink: /:title/
+
+# Authors
+authors:
+  gaz:
+    name: Gaz
+    display_name: Gaz
+    gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    web: https://www.hackcar.uk
+    twitter: https://twitter.com/_GarethP
+    description: "A hobbyist car hacker, just sharing his findings."
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+
+# Pagination
+paginate: 6
+paginate_path: /page:num/
+
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
