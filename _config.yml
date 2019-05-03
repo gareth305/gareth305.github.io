@@ -17,7 +17,8 @@ authors:
   gaz:
     name: Gaz
     display_name: Gaz
-    gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    gravatar: 2c91f47a4ebea4e44bcf5393c9dcbf3a
+    #gravatar: e56154546cf4be74e393c62d1ae9f9d4
     web: https://www.hackcar.uk
     twitter: https://twitter.com/_GarethP
     description: "A hobbyist car hacker, just sharing his findings."
