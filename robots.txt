@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: 
+Disallow: /changelog
+Disallow: /_pages
+Disallow: /categories
+
+Sitemap: https://hackcar.uk/sitemap
