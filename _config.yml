@@ -52,3 +52,10 @@ kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: true
+#Sitemap
+defaults:
+  -
+    scope:
+      path:            "_pages"
+    values:
+      sitemap:         false
