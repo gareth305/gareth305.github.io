@@ -11,20 +11,6 @@ Hi!
 
 I'm Gaz! - [@_GarethP](https://twitter.com/_GarethP){:target="\_blank"}
 
-Currently, I'm a final year computer forensics and security student at Leeds Beckett, hopefully this will change to graduate in a few months!🤞🏼
+Initially, the plan was to solely use this as a automotive security blog (hence the name). However, times have changed and I'll be posting anything security. More as something for myself to refer to in the future, but also for others to use.
 
-As part of my final year studies, we're required to complete a production project module. This is basically a "pick a project and get working" type of thing, but with some guidance from your supervisors, and that's where this blog comes in.
-
-I knew that I wanted to challenge myself and try something different, something out of the box. So decided on car hacking, with a hint of forensics thrown in for good measure. This turned into something more than just a year long project, this has become a hobby, of sorts.
-
-I've had lots of support and amazing opportunities from getting into car hacking. From meeting lots of highly knowledgable people in this subject, to being asked to help out with multiple conferences. It's been an amazing experience.
-
-Some honourable mentions:
-
-- [Mark C.](https://twitter.com/LargeCardinal){:target="\_blank"} - Mark was the first to introduce me to car hacking, in the car park of the university whilst experimenting with my car. He also organises and runs [@BSidesLeeds](https://twitter.com/BSidesLeeds){:target="\_blank"}, which is where I gave my first talk regarding the subject and was asked to help run [#CarHackVillageUK](https://twitter.com/hashtag/carhackvillageuk?f=tweets&vertical=default&src=hash){:target="\_blank"}.
-- [Noel L.](https://twitter.com/harpershawic){:target="\_blank"} - Noel is the director of HarperShaw, a vehicle forensics company specialising in collision investigation. Using his contacts and expertise in vehicle forensics, Noel helped me in securing a car to test on and providing helpful knowledge in the issues faced by car forensic professionals. Offering support anywhere he can.
-- [James W.](https://twitter.com/james_wales){:target="\_blank"} - Introduced to me by Noel, James has been able to offer valuable knowledge on the mechanical side of car hacking. Working as a master technician, he has been there to answer any questions and queries about the car's internal systems and how they work.
-- [Ian T.](https://twitter.com/mintynet){:target="\_blank"} - I first met Ian through helping run the car hacking village he was organising at BSides Leeds. Having built his own ECUs for his kit car, taken a Peugeot 208 and put it in a transportable box, and managing to make his Jag loose it's gearbox, Ian has more than enough experience to know exactly what he's doing when it comes to car hacking!
-- [Emlyn B.](https://twitter.com/butterfield_e){:target="\_blank"} - Saving the best till last! Emlyn, although not knowing anything about car hacking, has been supportive throughout the entire project. From giving advice where he can to just constantly listening to me rant about everything and anything! He's been amazing! It's not just because he gives me my grades or anything... 😜
-
-Most likely, I'll forget all about this blog for the next couple of months or so, deadlines 🙄, if I've not posted anything by June give me a nudge on [Twitter](https://twitter.com/_GarethP){:target="\_blank"}?
+A little about me... I graduated from Leeds Beckett back in 2019 having studied computer forensics and security. In the past I've experienced computer repairs to database administration. However, currently, I'm a CySOC analyst focusing on automation and SIEM platforms.
