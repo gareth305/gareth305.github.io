@@ -2,7 +2,7 @@
 layout: post
 title: "Guide to Car Hacking"
 author: gaz
-categories: [ Beginner, Arduino, Nano-CAN ]
+categories: [ Beginner, Arduino, Nano-CAN, Car Hacking, Automotive Security ]
 ---
 For my first official blog post, I felt it fitting to start from the beginning. Since BSides Edinburgh, a couple of weeks back, a few people have asked for some guidance on how to actually make use of the badges, and business PCB cards. Well, ask and ye’ shall receive!
 
