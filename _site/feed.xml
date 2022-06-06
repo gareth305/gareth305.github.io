@@ -5,15 +5,13 @@
     <description>A Cyber Security Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 06 Jun 2022 21:32:58 +0100</pubDate>
-    <lastBuildDate>Mon, 06 Jun 2022 21:32:58 +0100</lastBuildDate>
+    <pubDate>Mon, 06 Jun 2022 21:38:11 +0100</pubDate>
+    <lastBuildDate>Mon, 06 Jun 2022 21:38:11 +0100</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
         <title>Detection Lab: The long way (Pt. 1)</title>
-        <description>&lt;h2&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;I recently came across &lt;a href=&quot;https://twitter.com/Centurion&quot;&gt;Chris Long&lt;/a&gt;’s &lt;a href=&quot;https://github.com/clong/detectionlab&quot;&gt;Detection Lab&lt;/a&gt;. Detection Lab automates the creation of an Active Directory environment, complete with logging and additional tools. Once deployed it acts as a play area for defenders to practise and test, all whilst capturing the sort of logs you’d expect from any self-respecting business. I can’t tell you how many times I’ve wanted to set up a similar environment but not known where to begin.&lt;/p&gt;
+        <description>&lt;p&gt;I recently came across &lt;a href=&quot;https://twitter.com/Centurion&quot;&gt;Chris Long&lt;/a&gt;’s &lt;a href=&quot;https://github.com/clong/detectionlab&quot;&gt;Detection Lab&lt;/a&gt;. Detection Lab automates the creation of an Active Directory environment, complete with logging and additional tools. Once deployed it acts as a play area for defenders to practise and test, all whilst capturing the sort of logs you’d expect from any self-respecting business. I can’t tell you how many times I’ve wanted to set up a similar environment but not known where to begin.&lt;/p&gt;
 
 &lt;p&gt;However, after trying to deploy the environment, it became obvious that whilst a lot of time had been put into the automation and additional features, not a huge amount was spent on documentation. A statement that some of the project contributors have openly admitted and vowed to rectify. After eventually admitting defeat, I realised that the better solution would be to configure the environments manually. Since the documentation details the endpoints and installed tools, it takes away the main struggle I was facing.&lt;/p&gt;
 

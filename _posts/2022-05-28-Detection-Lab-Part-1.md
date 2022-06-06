@@ -4,8 +4,6 @@ title: "Detection Lab: The long way (Pt. 1)"
 author: gaz
 categories: [ HomeLab, DetectionLab, ThreatHunting ]
 ---
-<h2>Introduction</h2>
-
 I recently came across [Chris Long](https://twitter.com/Centurion)'s [Detection Lab](https://github.com/clong/detectionlab). Detection Lab automates the creation of an Active Directory environment, complete with logging and additional tools. Once deployed it acts as a play area for defenders to practise and test, all whilst capturing the sort of logs you’d expect from any self-respecting business. I can’t tell you how many times I’ve wanted to set up a similar environment but not known where to begin. 
 
 However, after trying to deploy the environment, it became obvious that whilst a lot of time had been put into the automation and additional features, not a huge amount was spent on documentation. A statement that some of the project contributors have openly admitted and vowed to rectify. After eventually admitting defeat, I realised that the better solution would be to configure the environments manually. Since the documentation details the endpoints and installed tools, it takes away the main struggle I was facing.
