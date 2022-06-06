@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@_GarethP">
+<meta name="twitter:title" content="HackCar">
+<meta name="twitter:description" content="The Car Hacking Blog">
+<meta name="twitter:image" content="https://hackcar.uk/assets/images/circle.png">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136570543-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136570543-1');
+</script>
+
+<link rel="icon" href="/assets/images/logo.png">
+
+<title>Detection Lab: The long way (Pt. 1) | HackCar</title>
+<meta itemprop="description" name="description" content="A Cyber Security Blog" />
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Detection Lab: The long way (Pt. 1) | HackCar</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Detection Lab: The long way (Pt. 1)" />
+<meta name="author" content="gaz" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction" />
+<meta property="og:description" content="Introduction" />
+<link rel="canonical" href="http://localhost:4000/Detection-Lab-Part-1/" />
+<meta property="og:url" content="http://localhost:4000/Detection-Lab-Part-1/" />
+<meta property="og:site_name" content="HackCar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-28T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Detection Lab: The long way (Pt. 1)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"gaz"},"dateModified":"2022-05-28T00:00:00+01:00","datePublished":"2022-05-28T00:00:00+01:00","description":"Introduction","headline":"Detection Lab: The long way (Pt. 1)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Detection-Lab-Part-1/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"gaz"},"url":"http://localhost:4000/Detection-Lab-Part-1/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/logo.png" alt="HackCar">
+    </a>
+	    <img src="https://iplogger.org/1Nfqx7" alt=""/>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/">Blog</a>
+                </li>
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/whoami">$whoami</a>
+                </li>
+
+                <script src="/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <!--<h1 class="sitetitle">HackCar</h1>
+    <img src="/assets/images/logo.png" alt="HackCar" style="height: 100px;">
+    <p class="lead">
+         A Cyber Security Blog
+    </p>-->
+</div>
+
+
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">
+           <div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Detection Lab: The long way (Pt. 1)&url=http://localhost:4000/Detection-Lab-Part-1/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/Detection-Lab-Part-1/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+    </ul>
+</div>
+
+		</div>
+
+
+		<!-- Post -->
+        
+
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+
+                <!-- Author Box -->
+                
+				<div class="row post-top-meta">
+					<div class="col-md-2">
+						<img class="author-thumb" src="https://www.gravatar.com/avatar/2c91f47a4ebea4e44bcf5393c9dcbf3a?s=250&d=mm&r=x" alt="Gaz">
+					</div>
+					<div class="col-md-10">
+						<a target="_blank" class="link-dark" href="https://www.hackcar.uk">Gaz</a><a target="_blank" href="https://twitter.com/_GarethP" class="btn follow">Follow</a>
+						<span class="author-description">Sharing in hopes of helping others.</span>
+					</div>
+				</div>
+                
+
+                <!-- Post Title -->
+				<h1 class="posttitle">Detection Lab: The long way (Pt. 1)</h1>
+
+			</div>
+
+			<!-- Post Featured Image -->
+			
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<h2>Introduction</h2>
+
+<p>I recently came across <a href="https://twitter.com/Centurion">Chris Long</a>’s <a href="https://github.com/clong/detectionlab">Detection Lab</a>. Detection Lab automates the creation of an Active Directory environment, complete with logging and additional tools. Once deployed it acts as a play area for defenders to practise and test, all whilst capturing the sort of logs you’d expect from any self-respecting business. I can’t tell you how many times I’ve wanted to set up a similar environment but not known where to begin.</p>
+
+<p>However, after trying to deploy the environment, it became obvious that whilst a lot of time had been put into the automation and additional features, not a huge amount was spent on documentation. A statement that some of the project contributors have openly admitted and vowed to rectify. After eventually admitting defeat, I realised that the better solution would be to configure the environments manually. Since the documentation details the endpoints and installed tools, it takes away the main struggle I was facing.</p>
+
+<p align="center">
+<img src="/assets/images/lab.png" alt="alt text" height="600" />
+</p>
+
+<p>This diagram gives an overview of what a deployed Detection Lab environment should look like. Since I’m creating this manually, I’ll likely omit some of the tools and feed the logs into IBM QRadar Community Edition. To save some time I’ve already created the required virtual machines in ESXi. So, we’ll start by promoting one of the Windows 2019 servers to a domain controller.</p>
+
+<h2>Installing Roles &amp; Features</h2>
+<p>We’ll start small by modifying the Local Security Policy to enable “Interactive logon: Do not require CTRl + ALT + DEL”. This just makes logging into the server a little easier when RDP’ing.</p>
+
+<p>Firstly, head to Tools &gt; Local Security Policy from the Server Manager window.</p>
+<p align="center">
+<img src="/assets/images/localsecuritypolicy.png" alt="Local Security Policy" height="300" />
+</p>
+<p>Then open and enable “Interactive logon: Do not require CTRl + ALT + DEL”, located under Local Policies &gt; Security Options.</p>
+<p align="center">
+<img src="/assets/images/noCAD.png" alt="No CTRL + ALT + DEL" height="300" />
+</p>
+<p>Now that’s sorted, we need to install the services and software required for a DC. We can do this by selecting “Add roles and features” from the quick start section of the Server Manager dashboard.</p>
+<p align="center">
+<img src="/assets/images/dashquickstart.png" alt="Dashboard Quick Start" height="300" />
+</p>
+<p>We’re then presented with two installation types:</p>
+
+<p><b>Role-based or feature-based installation:</b> This option allows you to select which services/roles you want to install.</p>
+<p>
+<b>Remote Desktop Services installation:</b> This option will select, install, and configure the needed components for the selected scenario.
+<p>
+We'll choose "Role-based or feature-based installation" and keep the default settings on the Server Selection page.
+<p>
+To promote the server to a domain controller we need to ensure that "Active Directory Domain Services" are installed, at the very least.
+<p align="center">
+<img src="/assets/images/addroles.png" alt="Roles/Services" height="500" />
+</p>
+Select the check box next to the service and click Add Features on the pop-up. On the next page, the basic features required for this role should be selected by default. Click next and next again.
+<p align="center">
+<img src="/assets/images/confirm.png" alt="Confirmation page" height="500" />
+</p>
+Finally, ensure the automatic restart option is enabled and click install.
+
+<h2>Configuration</h2>
+Now that the roles and features are installed, we need to promote the server to a domain controller. First, open the notifications window and select "Promote this server to a domain controller".
+<p align="center">
+<img src="/assets/images/promote.png" alt="Promote to domain controller" height="300" />
+</p>
+Next, select "Add a new forest" and specify a domain. This is commonly a .local address.
+<p align="center">
+<img src="/assets/images/newforest.png" alt="Add a new forest" height="500" />
+</p>
+Then we need to set a DSRM (Directory Services Restore Mode) password. DSRM is a boot mode that allows repair or recovery of Active Directory. It allows logon when Active Directory has failed.
+<p align="center">
+<img src="/assets/images/options.png" alt="Specify DSRM password" height="500" />
+</p>
+We can ignore the warning on the DNS Options page since we're configuring a DNS server as part of this process. Leaving this page as is and moving to the next step.
+<p>
+After a few seconds, the NetBIOS name should automatically populate.
+<p align="center">
+<img src="/assets/images/additionaloptions.png" alt="Set netBIOS name" height="500" />
+</p>
+The paths can be left as default.
+<p align="center">
+<img src="/assets/images/paths.png" alt="Set paths" height="500" />
+</p>
+Finally, review the options and, once the prerequisite checks are complete, click install.
+<p align="center">
+<img src="/assets/images/prereq.png" alt="Prerequisit checks" height="500" />
+</p>
+Now we have the domain controller configured. We'll look to add the other two VMs to the domain and configure the event collector in the next part.
+</p></p></p></p>
+
+			</div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2022-05-28">28 May 2022</time></span>
+                
+                </small>
+            </p>
+
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+                    
+                    
+                    <li>
+                     <a class="smoothscroll" href="/categories.html#DetectionLab">DetectionLab</a>
+                    </li>
+                    
+                    <li>
+                     <a class="smoothscroll" href="/categories.html#HomeLab">HomeLab</a>
+                    </li>
+                    
+                    <li>
+                     <a class="smoothscroll" href="/categories.html#ThreatHunting">ThreatHunting</a>
+                    </li>
+                    
+				</ul>
+			</div>
+			<!-- End Categories -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="http://localhost:4000/Beginners-Guide-To-Car-Hacking/"> &laquo; Guide to Car Hacking</a>
+            
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+
+
+<!-- Begin Comments
+==================================================
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = ''; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first:
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+
+</div>
+
+
+
+</div>
+
+<!-- Categories Jumbotron
+==================================================
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a href="/categories#Beginner">Beginner (1)</a>
+                
+                    <a href="/categories#Arduino">Arduino (1)</a>
+                
+                    <a href="/categories#Nano-CAN">Nano-CAN (1)</a>
+                
+                    <a href="/categories#Car-Hacking">Car Hacking (1)</a>
+                
+                    <a href="/categories#Automotive-Security">Automotive Security (1)</a>
+                
+                    <a href="/categories#HomeLab">HomeLab (1)</a>
+                
+                    <a href="/categories#DetectionLab">DetectionLab (1)</a>
+                
+                    <a href="/categories#ThreatHunting">ThreatHunting (1)</a>
+                
+            
+            
+		</div>
+
+
+
+	</div>
+</div>
+
+
+
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                 Copyright © 2022 HackCar
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+
+</body>
+</html>

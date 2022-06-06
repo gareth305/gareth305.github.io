@@ -5,9 +5,99 @@
     <description>A Cyber Security Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 May 2022 12:19:30 +0100</pubDate>
-    <lastBuildDate>Sat, 28 May 2022 12:19:30 +0100</lastBuildDate>
+    <pubDate>Mon, 06 Jun 2022 21:32:58 +0100</pubDate>
+    <lastBuildDate>Mon, 06 Jun 2022 21:32:58 +0100</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Detection Lab: The long way (Pt. 1)</title>
+        <description>&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I recently came across &lt;a href=&quot;https://twitter.com/Centurion&quot;&gt;Chris Long&lt;/a&gt;’s &lt;a href=&quot;https://github.com/clong/detectionlab&quot;&gt;Detection Lab&lt;/a&gt;. Detection Lab automates the creation of an Active Directory environment, complete with logging and additional tools. Once deployed it acts as a play area for defenders to practise and test, all whilst capturing the sort of logs you’d expect from any self-respecting business. I can’t tell you how many times I’ve wanted to set up a similar environment but not known where to begin.&lt;/p&gt;
+
+&lt;p&gt;However, after trying to deploy the environment, it became obvious that whilst a lot of time had been put into the automation and additional features, not a huge amount was spent on documentation. A statement that some of the project contributors have openly admitted and vowed to rectify. After eventually admitting defeat, I realised that the better solution would be to configure the environments manually. Since the documentation details the endpoints and installed tools, it takes away the main struggle I was facing.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/lab.png&quot; alt=&quot;alt text&quot; height=&quot;600&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;This diagram gives an overview of what a deployed Detection Lab environment should look like. Since I’m creating this manually, I’ll likely omit some of the tools and feed the logs into IBM QRadar Community Edition. To save some time I’ve already created the required virtual machines in ESXi. So, we’ll start by promoting one of the Windows 2019 servers to a domain controller.&lt;/p&gt;
+
+&lt;h2&gt;Installing Roles &amp;amp; Features&lt;/h2&gt;
+&lt;p&gt;We’ll start small by modifying the Local Security Policy to enable “Interactive logon: Do not require CTRl + ALT + DEL”. This just makes logging into the server a little easier when RDP’ing.&lt;/p&gt;
+
+&lt;p&gt;Firstly, head to Tools &amp;gt; Local Security Policy from the Server Manager window.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/localsecuritypolicy.png&quot; alt=&quot;Local Security Policy&quot; height=&quot;300&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Then open and enable “Interactive logon: Do not require CTRl + ALT + DEL”, located under Local Policies &amp;gt; Security Options.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/noCAD.png&quot; alt=&quot;No CTRL + ALT + DEL&quot; height=&quot;300&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Now that’s sorted, we need to install the services and software required for a DC. We can do this by selecting “Add roles and features” from the quick start section of the Server Manager dashboard.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/dashquickstart.png&quot; alt=&quot;Dashboard Quick Start&quot; height=&quot;300&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;We’re then presented with two installation types:&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Role-based or feature-based installation:&lt;/b&gt; This option allows you to select which services/roles you want to install.&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;Remote Desktop Services installation:&lt;/b&gt; This option will select, install, and configure the needed components for the selected scenario.
+&lt;p&gt;
+We&apos;ll choose &quot;Role-based or feature-based installation&quot; and keep the default settings on the Server Selection page.
+&lt;p&gt;
+To promote the server to a domain controller we need to ensure that &quot;Active Directory Domain Services&quot; are installed, at the very least.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/addroles.png&quot; alt=&quot;Roles/Services&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+Select the check box next to the service and click Add Features on the pop-up. On the next page, the basic features required for this role should be selected by default. Click next and next again.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/confirm.png&quot; alt=&quot;Confirmation page&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+Finally, ensure the automatic restart option is enabled and click install.
+
+&lt;h2&gt;Configuration&lt;/h2&gt;
+Now that the roles and features are installed, we need to promote the server to a domain controller. First, open the notifications window and select &quot;Promote this server to a domain controller&quot;.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/promote.png&quot; alt=&quot;Promote to domain controller&quot; height=&quot;300&quot; /&gt;
+&lt;/p&gt;
+Next, select &quot;Add a new forest&quot; and specify a domain. This is commonly a .local address.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/newforest.png&quot; alt=&quot;Add a new forest&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+Then we need to set a DSRM (Directory Services Restore Mode) password. DSRM is a boot mode that allows repair or recovery of Active Directory. It allows logon when Active Directory has failed.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/options.png&quot; alt=&quot;Specify DSRM password&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+We can ignore the warning on the DNS Options page since we&apos;re configuring a DNS server as part of this process. Leaving this page as is and moving to the next step.
+&lt;p&gt;
+After a few seconds, the NetBIOS name should automatically populate.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/additionaloptions.png&quot; alt=&quot;Set netBIOS name&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+The paths can be left as default.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/paths.png&quot; alt=&quot;Set paths&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+Finally, review the options and, once the prerequisite checks are complete, click install.
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/prereq.png&quot; alt=&quot;Prerequisit checks&quot; height=&quot;500&quot; /&gt;
+&lt;/p&gt;
+Now we have the domain controller configured. We&apos;ll look to add the other two VMs to the domain and configure the event collector in the next part.
+&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 28 May 2022 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/Detection-Lab-Part-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/Detection-Lab-Part-1/</guid>
+        
+        
+        <category>HomeLab</category>
+        
+        <category>DetectionLab</category>
+        
+        <category>ThreatHunting</category>
+        
+      </item>
     
       <item>
         <title>Guide to Car Hacking</title>

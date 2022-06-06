@@ -5,6 +5,10 @@
 <lastmod>2019-05-03T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/Detection-Lab-Part-1/</loc>
+<lastmod>2022-05-28T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/whoami/</loc>
 </url>
 <url>
@@ -24,5 +28,14 @@
 </url>
 <url>
 <loc>http://localhost:4000/category/automotive-security/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/homelab/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/detectionlab/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/threathunting/</loc>
 </url>
 </urlset>
